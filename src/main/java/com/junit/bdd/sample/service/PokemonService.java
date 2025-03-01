@@ -1,5 +1,6 @@
 package com.junit.bdd.sample.service;
 
+import com.junit.bdd.sample.exception.PokemonNotFoundException;
 import com.junit.bdd.sample.model.PokemonResponse;
 import com.junit.bdd.sample.store.entity.Pokemon;
 import com.junit.bdd.sample.store.repository.PokemonRepository;
@@ -13,7 +14,8 @@ public class PokemonService {
     private final PokemonRepository repository;
 
     public PokemonResponse pokemonById(Integer pokedexEntryNumber) throws OperationNotSupportedException {
-        Pokemon pokemon = repository.findById(pokedexEntryNumber).get();
+        Pokemon pokemon = repository.findById(pokedexEntryNumber)
+                .orElseThrow(() -> new PokemonNotFoundException("Pokedex entry " + pokedexEntryNumber + " not found."));
         return new PokemonResponse(pokemon.getName());
     }
 }
