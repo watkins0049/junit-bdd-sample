@@ -13,7 +13,7 @@ import javax.naming.OperationNotSupportedException;
 public class PokemonService {
     private final PokemonRepository repository;
 
-    public PokemonResponse pokemonById(Integer pokedexEntryNumber) throws OperationNotSupportedException {
+    public PokemonResponse pokemonById(Integer pokedexEntryNumber) {
         Pokemon pokemon = repository.findById(pokedexEntryNumber)
                 .orElseThrow(() -> new PokemonNotFoundException("Pokedex entry " + pokedexEntryNumber + " not found."));
         return new PokemonResponse(pokemon.getName());

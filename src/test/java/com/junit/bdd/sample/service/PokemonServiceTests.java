@@ -24,7 +24,8 @@ public class PokemonServiceTests {
     private PokemonService service;
     private PokemonRepository repository;
 
-    // First layer before each. This is executed first before every other before each
+    // First layer before each. This is executed first before every other before each. This layer
+    // only sets up the service under test and its dependencies.
     @BeforeEach
     void beforeEach() {
         repository = mock(PokemonRepository.class);
