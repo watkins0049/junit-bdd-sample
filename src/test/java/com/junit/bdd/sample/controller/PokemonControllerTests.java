@@ -19,12 +19,14 @@ import java.io.UnsupportedEncodingException;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.*;
 
+// These tests are similar to the service layer. If you're starting here first, take a look
+// at the tests in PokemonServiceTests class for a full explanation of what's going on. After,
+// come back here and take another look!
 @DisplayName("class: PokemonController")
 public class PokemonControllerTests {
 
     private final Faker faker = new Faker();
 
-    private PokemonController controller;
     private PokemonService service;
 
     private MockMvc mockMvc;
@@ -32,13 +34,14 @@ public class PokemonControllerTests {
     @BeforeEach
     void beforeEach() {
         service = mock(PokemonService.class);
-        controller = new PokemonController(service);
+        PokemonController controller = new PokemonController(service);
         mockMvc = MockMvcBuilders.standaloneSetup(controller).build();
     }
 
     @Nested
     @DisplayName("function: pokemonByEntry()")
     class PokemonByEntryFunction {
+        // This test is for a VALID Pokédex entry. Maybe you can try adding an invalid scenario?
         @Nested
         @DisplayName("GIVEN a valid Pokedex entry number")
         class GivenAPokedexEntryNumber {
