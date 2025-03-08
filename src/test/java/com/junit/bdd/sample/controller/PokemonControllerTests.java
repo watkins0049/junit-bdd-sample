@@ -41,6 +41,7 @@ public class PokemonControllerTests {
     @Nested
     @DisplayName("function: pokemonByEntry()")
     class PokemonByEntryFunction {
+
         // This test is for a VALID Pokédex entry. Maybe you can try adding an invalid scenario?
         @Nested
         @DisplayName("GIVEN a valid Pokedex entry number")
